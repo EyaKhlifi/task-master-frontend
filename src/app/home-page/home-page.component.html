@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-between align-items-center upper-header-container">
+      <div class="d-flex align-items-center">
+        <img src="assets/logos/logo-application.png" class="user-icon">
+        <span class="application-name">Task Master</span>
+      </div>
+      <div class="d-flex align-items-center">
+        <input type="search" class="search-bar-input" placeholder="Search for users, tasks, or keywords...">
+        <mat-icon class="search-bar-icon" matRipple>search</mat-icon>
+      </div>
+
+      <div>
+        <mat-icon class="upper-header-button" (click)="toggleFullscreen()">fullscreen</mat-icon>
+        <mat-icon class="upper-header-button" matBadge="15" matBadgeColor="warn" matBadgeSize="small">notifications
+        </mat-icon>
+        <mat-icon class="upper-header-button">settings</mat-icon>
+        <mat-icon class="upper-header-button">power_settings_new</mat-icon>
+      </div>
+
+    </div>
+    <div class="col-12 m-0 p-0 lower-header-container">
+      <div class="upper-lower-header-container d-flex flex-grow">
+        <div class="avatar-container">
+          <img src="assets/logos/avatar.png" class="avatar">
+        </div>
+        <span>
+          <div class="user-name">Eleanor Anderson</div>
+          <div class="user-role">Super Admin</div>
+        </span>
+      </div>
+      <div class="lower-lower-header-container d-flex justify-content-start align-items-center">
+        <div class="header-element d-flex justify-content-start align-items-center">
+          <span class="header-element-title">Menu</span>
+          <mat-icon>menu</mat-icon>
+        </div>
+        <div class="header-element d-flex justify-content-start align-items-center" [matMenuTriggerFor]="workspace">
+          <span class="header-element-title">Workspace</span>
+          <mat-icon>keyboard_arrow_down</mat-icon>
+          <mat-menu #workspace="matMenu">
+            <span>Workspace-1</span>
+            <span>Workspace-2</span>
+          </mat-menu>
+        </div>
+        <div class="header-element d-flex justify-content-start align-items-center" [matMenuTriggerFor]="recent">
+          <span class="header-element-title">Recent</span>
+          <mat-icon>keyboard_arrow_down</mat-icon>
+          <mat-menu #recent="matMenu">
+            <span>Workspace-1</span>
+            <span>Workspace-2</span>
+          </mat-menu>
+        </div>
+        <div class="header-element">
+          <button class="create-element" matRipple>Create</button>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>

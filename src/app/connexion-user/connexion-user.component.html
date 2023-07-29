@@ -1,0 +1,102 @@
+<div class="login-container d-flex justify-content-center align-items-center">
+  <ng-container *ngIf="state==='login'">
+    <div class="login-form d-flex flex-column"
+         [formGroup]="loginForm">
+      <img src="assets/logos/user-icon.png" class="user-icon">
+      <div class="title">Login User</div>
+      <div class="label">Username :</div>
+      <div class="input-container">
+        <i class="fas fa-user input-icon"></i>
+        <input type="text" class="input-user" placeholder="Enter your username" formControlName="username"
+               [ngStyle]=" (!loginForm.controls['username'].valid && loginForm.controls['username'].touched) ? {'border': '1px solid rgb(255 55 55 / 30%)'} : {'border': 'none'}">
+      </div>
+      <div class="label" style="margin-top: 20px">Password :</div>
+      <div class="input-container">
+        <i class="fas fa-lock input-icon"></i>
+        <input [type]="showPasswordLogin?'text':'password'" class="input-user" placeholder="Enter your password"
+               formControlName="password"
+               [ngStyle]=" (!loginForm.controls['password'].valid && loginForm.controls['password'].touched) ? {'border': '1px solid rgb(255 55 55 / 30%)'} : {'border': 'none'}">
+        <i *ngIf="showPasswordLogin" class="fas fa-eye password-eye-icon"
+           (click)="handlePasswordLoginDisplay(false)"></i>
+        <i *ngIf="!showPasswordLogin" class="fas fa-eye-slash password-eye-icon"
+           (click)="handlePasswordLoginDisplay(true)"></i>
+      </div>
+      <div class="d-flex flex-row justify-content-between" style="margin-top: 5px">
+        <label class="custom-checkbox">
+          <input type="checkbox" formControlName="rememberMe">
+          <span class="checkmark"></span>
+          Remember me
+        </label>
+        <div class="forgot-password" (click)="resetPassword()">Forgot your password ?</div>
+      </div>
+      <button class="login-button" matRipple (click)="login()"
+              [ngStyle]="loginForm.valid ? {'cursor': 'pointer'} : {'cursor': 'not-allowed'}">Log In
+      </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="state==='forgotPassword'">
+    <div class="login-form d-flex flex-column"
+         [formGroup]="forgotPasswordForm">
+      <img src="assets/logos/forgot-password-icon.png" class="user-icon">
+      <div class="title">Forgot Password</div>
+      <div class="label">Username :</div>
+      <div class="input-container">
+        <i class="fas fa-user input-icon"></i>
+        <input type="text" class="input-user" placeholder="Enter your username" formControlName="username"
+               [ngStyle]=" (!forgotPasswordForm.controls['username'].valid && forgotPasswordForm.controls['username'].touched) ? {'border': '1px solid rgb(255 55 55 / 30%)'} : {'border': 'none'}"
+               autofocus>
+      </div>
+      <div class="label" style="margin-top: 20px">Address mail :</div>
+      <div class="input-container">
+        <i class="fas fa-envelope input-icon"></i>
+        <input type="text" class="input-user" formControlName="email"
+               [ngStyle]=" (!forgotPasswordForm.controls['email'].valid && forgotPasswordForm.controls['email'].touched) ? {'border': '1px solid rgb(255 55 55 / 30%)'} : {'border': 'none'}"
+               placeholder="Enter your address mail">
+      </div>
+      <div class="d-flex flex-row justify-content-end" style="margin-top: 5px">
+        <div class="forgot-password" (click)="BackToLogin()">Back to login ?</div>
+      </div>
+      <button class="login-button" matRipple (click)="sendRequest()"
+              [ngStyle]="forgotPasswordForm.valid ? {'cursor': 'pointer'} : {'cursor': 'not-allowed'}">Send Request
+      </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="state==='resetPassword'">
+    <div class="login-form d-flex flex-column" [formGroup]="resetPasswordForm">
+      <img src="assets/logos/reset-password-icon.png" class="user-icon">
+      <div class="title">Reset Password</div>
+      <div class="label">New password :</div>
+      <div class="input-container">
+        <i class="fas fa-lock input-icon"></i>
+        <input [type]="showNewPasswordReset?'text':'password'" class="input-user" placeholder="Create new password"
+               formControlName="newPassword"
+               [ngStyle]=" (!resetPasswordForm.controls['newPassword'].valid && resetPasswordForm.controls['newPassword'].touched) ? {'border': '1px solid rgb(255 55 55 / 30%)'} : {'border': 'none'}"
+               (copy)="preventDefault($event)" (paste)="preventDefault($event)"
+               autofocus>
+        <i *ngIf="showNewPasswordReset" class="fas fa-eye password-eye-icon"
+           (click)="handleNewPasswordResetDisplay(false)"></i>
+        <i *ngIf="!showNewPasswordReset" class="fas fa-eye-slash password-eye-icon"
+           (click)="handleNewPasswordResetDisplay(true)"></i>
+      </div>
+      <div class="label" style="margin-top: 20px">Confirm password :</div>
+      <div class="input-container">
+        <i class="fas fa-unlock input-icon"></i>
+        <input [type]="showConfirmPasswordReset?'text':'password'" class="input-user"
+               placeholder="Confirm your password"
+               [ngStyle]="((!resetPasswordForm.controls['confirmPassword'].valid && resetPasswordForm.controls['confirmPassword'].touched) ||( resetPasswordForm.controls['confirmPassword'].touched && !resetPasswordForm.valid)) ? {'border': '1px solid rgb(255 55 55 / 30%)'} : {'border': 'none'}"
+               formControlName="confirmPassword" (copy)="preventDefault($event)" (paste)="preventDefault($event)">
+        <i *ngIf="showConfirmPasswordReset" class="fas fa-eye password-eye-icon"
+           (click)="handleConfirmPasswordReset(false)"></i>
+        <i *ngIf="!showConfirmPasswordReset" class="fas fa-eye-slash password-eye-icon"
+           (click)="handleConfirmPasswordReset(true)"></i>
+      </div>
+      <div class="d-flex flex-row justify-content-end" style="margin-top: 5px">
+        <div class="forgot-password" (click)="BackToLogin()">Back to login ?</div>
+      </div>
+      <button class="login-button"
+              [ngStyle]="resetPasswordForm.valid ? {'cursor': 'pointer'} : {'cursor': 'not-allowed'}">Reset
+        Password
+      </button>
+    </div>
+  </ng-container>
+</div>
