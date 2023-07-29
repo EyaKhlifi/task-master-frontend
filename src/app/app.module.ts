@@ -12,6 +12,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatBadgeModule} from "@angular/material/badge";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatBadgeModule} from "@angular/material/badge";
         MatMenuModule,
         MatIconModule,
         MatButtonModule,
-        MatBadgeModule
+        MatBadgeModule,
+        MatSidenavModule
     ],
   providers: [],
   bootstrap: [AppComponent]
