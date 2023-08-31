@@ -1,5 +1,9 @@
 import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {CreateWorkspaceDialogComponent} from "./create-workspace-dialog/create-workspace-dialog.component";
 
+
+// @ts-ignore
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -8,7 +12,7 @@ import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit} from '@
 export class HomePageComponent implements OnInit, AfterViewInit {
   sidenavHeight: number = 0;
 
-  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef) {
+  constructor(private elementRef: ElementRef, private cdr: ChangeDetectorRef, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -34,7 +38,15 @@ export class HomePageComponent implements OnInit, AfterViewInit {
     this.cdr.detectChanges();
     this.sidenavHeight = window.innerHeight - 180;
     this.cdr.detectChanges();
-    console.log(this.sidenavHeight);
   }
+
+  openCreateWorkspaceDialog(): void {
+    this.dialog.open(CreateWorkspaceDialogComponent, {
+      disableClose: true,
+      width: '800px',
+      height: '505px'
+    });
+  }
+
 
 }

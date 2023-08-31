@@ -1,0 +1,20 @@
+<div class="container-fluid" [formGroup]="boardForm">
+  <div class="row">
+    <div class="col-12 mb-2 d-flex justify-content-between align-items-center">
+      <select name="type" class="dialog-select" formControlName="select">
+        <option value="Latest Activity">Latest Activity</option>
+        <option value="Oldest Activity">Oldest Activity</option>
+        <option value="Ascending Alphabetically">Ascending Alphabetically</option>
+        <option value="Descending Alphabetically">Descending Alphabetically</option>
+      </select>
+      <input type="search" class="search-dashboard" placeholder="Search here for your board ..."
+             formControlName="search">
+    </div>
+    <div *ngFor="let board of listBoards" class="col-3">
+      <app-board-box [boardData]="board"></app-board-box>
+    </div>
+    <div class="col-3" (click)="openNewBoardDialog()">
+      <app-create-board></app-create-board>
+    </div>
+  </div>
+</div>

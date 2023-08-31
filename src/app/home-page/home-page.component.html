@@ -50,7 +50,7 @@
           </mat-menu>
         </div>
         <div class="header-element">
-          <button class="create-element" matRipple>Create</button>
+          <button class="create-element" (click)="openCreateWorkspaceDialog()" matRipple>Create</button>
         </div>
       </div>
     </div>
@@ -58,6 +58,10 @@
       <mat-drawer-container [style.height.px]="sidenavHeight">
         <mat-drawer #drawer class="drawer-sidenav" mode="side">
           <div class="drawer-separator">Planning</div>
+          <div class="drawer-element d-flex justify-content-start align-items-center" matRipple routerLink="boards">
+            <mat-icon class="drawer-element-icon">dashboard</mat-icon>
+            <div class="drawer-element-title">Boards</div>
+          </div>
           <div class="drawer-element d-flex justify-content-start align-items-center" matRipple>
             <mat-icon class="drawer-element-icon">dashboard</mat-icon>
             <div class="drawer-element-title">Board</div>
@@ -97,46 +101,7 @@
           </div>
         </mat-drawer>
         <div class="sidenav-content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros diam, semper ornare fringilla at, pretium
-          quis magna. Donec consequat molestie tortor, ac rutrum leo volutpat et. Nam euismod fringilla felis et
-          finibus. Nam sed vulputate diam, a cursus risus. Nam tempus ullamcorper nisl sed consequat. Integer quis
-          sagittis augue. Aenean condimentum auctor orci vel scelerisque. Mauris lacus libero, laoreet et laoreet non,
-          vehicula nec orci. Aenean tempor euismod risus eget pretium. Nullam et arcu orci. Mauris tincidunt nunc
-          gravida elit porta, at dignissim felis gravida. In sodales, erat quis molestie placerat, quam orci facilisis
-          risus, at congue lectus arcu at risus. In suscipit et quam sed consequat. Sed sed nulla luctus lorem posuere
-          lacinia.
-
-          Nam tristique gravida ligula, in egestas justo sagittis id. Nam volutpat ipsum eu venenatis auctor. Mauris
-          volutpat accumsan elit id imperdiet. Nulla laoreet, lectus ac varius imperdiet, diam orci dignissim nulla,
-          volutpat dictum purus lectus ut nunc. Cras odio nibh, tempor quis nunc sit amet, euismod suscipit massa. Ut in
-          diam ac justo viverra egestas. In vehicula nisl in enim sagittis, a faucibus urna accumsan. Sed congue tempor
-          sodales. Suspendisse a vehicula mi. Donec in risus quis nunc fringilla lacinia eu aliquam nibh. Maecenas
-          congue, lacus vel lacinia placerat, erat ante molestie est, at dignissim metus enim a augue. Quisque pharetra
-          metus sapien, ut aliquam mauris dapibus quis. Morbi quis ornare nisi, at convallis enim. Cras ligula libero,
-          interdum congue aliquam vitae, vulputate luctus odio.
-
-          Curabitur tempor maximus ex quis blandit. Vivamus sed eros eget nisl tempor tincidunt. Quisque eget nulla
-          quam. Nunc dictum eleifend orci, et consequat felis placerat a. Quisque eget facilisis metus, at finibus sem.
-          Donec luctus sit amet ex sit amet efficitur. Ut eu hendrerit dolor. Ut quis viverra lacus. Integer convallis
-          sed justo ut tempor. Nunc vulputate tempor ante, sit amet porta nisi feugiat vitae. Nulla vel vehicula nisi.
-          Integer ut sollicitudin magna. Praesent fringilla sapien in laoreet ultrices. Mauris sit amet eros
-          ullamcorper, sagittis libero eget, luctus nisi. Etiam luctus quis nisl at scelerisque. Nunc mollis ultricies
-          mauris, at facilisis velit aliquet porta.
-
-          Donec nec tempus turpis. In vestibulum sagittis maximus. Duis lacinia magna quis dolor pharetra, sit amet
-          sollicitudin massa euismod. Donec elementum mi luctus neque placerat, blandit fringilla dui blandit. Vivamus
-          placerat orci vitae sapien luctus, id dignissim justo lobortis. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Proin maximus blandit ante nec pharetra. Nulla blandit nisi in turpis mollis, non aliquet
-          nulla condimentum. Fusce at ante sed ipsum eleifend cursus quis eget massa. Nunc vel sapien sed erat dapibus
-          facilisis quis feugiat leo. Duis cursus dapibus nisi at rutrum. Curabitur eu vulputate lacus. Aenean urna
-          arcu, dictum vel dictum eget, hendrerit nec lacus. Vivamus eu nisi finibus justo accumsan lacinia.
-
-          Sed vehicula non erat sit amet condimentum. Maecenas non euismod tortor. Praesent vitae magna sit amet risus
-          tristique facilisis. Aenean lobortis semper dui vitae ornare. Integer interdum tristique justo vitae luctus.
-          Duis tincidunt nulla massa, ac lobortis neque vestibulum sit amet. Aenean porttitor leo sed leo tristique
-          lacinia.
-
-
+          <router-outlet></router-outlet>
         </div>
       </mat-drawer-container>
     </div>

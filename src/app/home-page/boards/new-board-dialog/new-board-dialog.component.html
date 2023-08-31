@@ -1,0 +1,30 @@
+<div class="container-fluid" [formGroup]="newBoardForm">
+  <div class="row">
+    <div class="col-12 m-0 p-0 dialog-header d-flex justify-content-between align-items-center">
+      <h2 class="dialog-title d-flex justify-content-start align-items-center">
+        <mat-icon class="dialog-icon">library_add</mat-icon>
+        Add new board
+      </h2>
+      <button class="dialog-button-close" (click)="closeDialog()" matRipple>X</button>
+    </div>
+    <div class="col-12 mt-3">
+      <div class="dialog-label">Name :</div>
+      <input type="text" class="dialog-input" placeholder="Enter your board name" formControlName="name"
+             [ngStyle]=" (!newBoardForm.controls['name'].valid && newBoardForm.controls['name'].touched) ? {'border': '1px solid rgb(255 55 55 / 30%)'} : {'border': 'none'}">
+    </div>
+    <div class="col-12 mt-4">
+      <div class="dialog-label">Visibility :</div>
+      <select name="type" class="dialog-select" formControlName="visibility"
+              [ngStyle]=" (!newBoardForm.controls['visibility'].valid && newBoardForm.controls['visibility'].touched) ? {'border': '1px solid rgb(255 55 55 / 30%)'} : {'border': 'none'}">
+        <option value="Private">Private</option>
+        <option value="Public">Public</option>
+      </select>
+    </div>
+    <div class="col-12 mt-5 mb-2 d-flex justify-content-end align-items-center">
+      <button class="dialog-discard-button" (click)="closeDialog()" matRipple>Discard</button>
+      <button class="dialog-confirm-button" (click)="confirmDialog()"
+              [ngStyle]="newBoardForm.valid ? {'cursor': 'pointer'} : {'cursor': 'not-allowed'}" matRipple>Confirm
+      </button>
+    </div>
+  </div>
+</div>
